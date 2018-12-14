@@ -11,7 +11,15 @@ kale 个人理解，如有不对。希望的指导。
 
 2:
  spring boot 启动注解@SpringBootApplication
-
+ 
+    @SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan。
+         I. @SpringBootConfiguration: 代表了SpringBoot的配置类，其本质上就是一个@Configuration。
+                @SpringBootConfiguration与@Configuration
+                    唯一不同的地方是在测试时，如果打上了@SpringBootConfiguration注释，那么SpringBootTest中并不需要指定就可以自动加载该配置类；而当                     打上@Configuration时，需要通过@SpringBootTest(classes = SBConfiguration.class)来指定加载的SpringBoot配置类。
+         II. @EnableAutoConfiguration: 能够自动配置spring的上下文，试图猜测和配置你想要的bean类，通常会自动根据你的类路径和你的bean定义自动配置。
+         III. @ComponentScan:对包的扫描。
+         
+      注：如果对注解不熟悉的小伙伴可以参考（http://www.cnblogs.com/huajiezh/p/5263849.html）
        
 3：springboot 通过maven的继承方式内嵌了tomcat等容器。
 
